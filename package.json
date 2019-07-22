@@ -35,6 +35,7 @@
             "sourceType": "module"
         },
         "rules": {
+            "no-unused-vars": "error",
             "no-var": "error",
             "semi": "error"
         }

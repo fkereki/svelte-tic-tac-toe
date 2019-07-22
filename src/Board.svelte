@@ -1,6 +1,9 @@
 <script>
     export let game; // define a prop
-    export let clickCell;
+
+    import { createEventDispatcher } from "svelte";
+
+    let dispatch = createEventDispatcher();
 </script>
 
 <style>
@@ -21,8 +24,8 @@
     <tbody>
         {#each game.board as row, rowIndex}
             <tr>
-                {#each row as column, columnIndex}
-                    <td on:click={clickCell.bind(null, rowIndex, columnIndex)}>{column}</td>
+                {#each row as col, colIndex}
+                    <td on:click={() => dispatch('played', { rowIndex, colIndex })}>{col}</td>
                 {/each}
             </tr>
         {/each}

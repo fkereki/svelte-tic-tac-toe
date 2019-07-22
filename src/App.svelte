@@ -22,6 +22,10 @@
             }
         });
     }
+
+    function onPlayed(event) {
+        game = game.click(event.detail.rowIndex, event.detail.colIndex);
+    }
 </script>
 
 <style>
@@ -42,4 +46,4 @@
     <h2>{message}</h2>
 {/if}
 
-<Board {game} clickCell={(x, y) => (game = game.click(x, y))} />
+<Board {game} on:played={onPlayed} />
