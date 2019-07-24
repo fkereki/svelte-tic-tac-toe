@@ -1,30 +1,31 @@
 <script>
     import Board from "./Board.svelte";
     import { TicTacToe } from "./board";
+    import { message } from "./store";
+    import { game } from "./store";
 
-    let message;
-    let game = createGame();
+    $game = createGame();
 
     function newGame() {
-        game = createGame();
+        $game = createGame();
     }
 
     function createGame() {
-        message = null;
+        $message = null;
 
         return new TicTacToe({
             onWin(winner) {
-                message = `${winner} wins!`;
+                $message = `${winner} wins!`;
             },
 
             onTie() {
-                message = `Tie game!`;
+                $message = `Tie game!`;
             }
         });
     }
 
     function onPlayed(event) {
-        game = game.click(event.detail.rowIndex, event.detail.colIndex);
+        $game = $game.click(event.detail.rowIndex, event.detail.colIndex);
     }
 </script>
 
@@ -43,7 +44,7 @@
 <button on:click={newGame}>New Game</button>
 
 {#if message}
-    <h2>{message}</h2>
+    <h2>{$message}</h2>
 {/if}
 
-<Board {game} on:played={onPlayed} />
+<Board game={$game} on:played={onPlayed} />
