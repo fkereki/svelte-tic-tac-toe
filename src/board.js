@@ -48,13 +48,5 @@ function getWinner(board) {
 }
 
 function isBoardFull(board) {
-    for (let row = 0; row < 3; row++) {
-        for (let column = 0; column < 3; column++) {
-            if (!board[row][column]) {
-                return false;
-            }
-        }
-    }
-
-    return true;
+    return board.every(row => row.every(Boolean));
 }
