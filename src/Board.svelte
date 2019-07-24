@@ -1,8 +1,6 @@
 <script>
-    export let game; // define a prop
-
+    export let game;
     import { createEventDispatcher } from "svelte";
-
     const dispatch = createEventDispatcher();
 </script>
 

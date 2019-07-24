@@ -1,52 +1,35 @@
-export function TicTacToe({ onWin, onTie }) {
-    const board = [["", "", ""], ["", "", ""], ["", "", ""]];
+export class TicTacToe {
+    constructor() {
+        this.board = [["", "", ""], ["", "", ""], ["", "", ""]];
+    }
 
-    let turn = "X";
-    let done = false;
+    click(rowIndex, columnIndex, turn) {
+        if (!this.board[rowIndex][columnIndex]) {
+            this.board[rowIndex][columnIndex] = turn;
+        }
+    }
 
-    return {
-        board,
-
-        click(rowIndex, columnIndex) {
-            if (!done && !board[rowIndex][columnIndex]) {
-                board[rowIndex][columnIndex] = turn;
-                turn = turn === "X" ? "O" : "X";
-
-                const winner = getWinner(board);
-                if (winner) {
-                    onWin(winner);
-                    done = true;
-                } else if (isBoardFull(board)) {
-                    onTie();
-                    done = true;
-                }
+    getWinner() {
+        for (let i = 0; i < 3; i++) {
+            if (this.board[i][0] && this.board[i][0] === this.board[i][1] && this.board[i][1] === this.board[i][2]) {
+                return this.board[i][1];
             }
+            if (this.board[0][i] && this.board[0][i] === this.board[1][i] && this.board[1][i] === this.board[2][i]) {
+                return this.board[1][i];
+            }
+        }
 
-            return this;
+        if (
+            (this.board[0][0] && this.board[0][0] === this.board[1][1] && this.board[1][1] == this.board[2][2]) ||
+            (this.board[0][2] && this.board[0][2] === this.board[1][1] && this.board[1][1] == this.board[2][0])
+        ) {
+            return this.board[1][1];
         }
-    };
-}
 
-function getWinner(board) {
-    for (let i = 0; i < 3; i++) {
-        if (board[i][0] && board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
-            return board[i][1];
-        }
-        if (board[0][i] && board[0][i] === board[1][i] && board[1][i] === board[2][i]) {
-            return board[1][i];
-        }
+        return null;
     }
 
-    if (
-        (board[0][0] && board[0][0] === board[1][1] && board[1][1] == board[2][2]) ||
-        (board[0][2] && board[0][2] === board[1][1] && board[1][1] == board[2][0])
-    ) {
-        return board[1][1];
+    isBoardFull() {
+        return this.board.every(row => row.every(Boolean));
     }
-
-    return null;
-}
-
-function isBoardFull(board) {
-    return board.every(row => row.every(Boolean));
 }
