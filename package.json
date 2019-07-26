@@ -24,14 +24,14 @@
         "rollup-plugin-terser": "^4.0.4",
         "svelte": "^3.0.0"
     },
-    "eslintConfig": {
+    "DISABLEDeslintConfig": {
         "env": {
             "browser": true,
             "node": true
         },
         "extends": "eslint:recommended",
         "parserOptions": {
-            "ecmaVersion": 10,
+            "ecmaVersion": 9,
             "sourceType": "module"
         },
         "rules": {
