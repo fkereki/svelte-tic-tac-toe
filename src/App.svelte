@@ -1,7 +1,7 @@
 <script>
     import Board from "./Board.svelte";
     import { TicTacToe } from "./board";
-    import { game, turn, whoWins, tieGame, boardFull } from "./store";
+    import { game, turn, whoWins, tieGame } from "./store";
 
     let finalResult = ``;
     let gameEnded = false;
@@ -46,14 +46,3 @@
     <h2 style="display:inline;">{finalResult}</h2>
 {/if}
 <Board game={$game} on:played={onPlayed} />
-whoWins=
-<b>{$whoWins}</b>
-(should be null while nobody wins)
-<br />
-boardFull=
-<b>{$boardFull}</b>
-(should be false unless all the board is filled in)
-<br />
-tieGame=
-<b>{$tieGame}</b>
-(should be true if the game is ended with no whoWins)
