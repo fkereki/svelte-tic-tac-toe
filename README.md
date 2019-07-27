@@ -1,7 +1,3 @@
-_Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)_
-
----
-
 # svelte app
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
@@ -72,3 +68,5 @@ I added `eslint` and `prettier` as I'm used to do.
 I did some simple refactorings of the code (for example, in `board.js`) without changing the overall structure or functionality.
 
 I didn't like that the `game` prop was directly modified in `board.svelte` so I passed a function that the component would call, in React fashion.
+
+I made more changes, in order to try out stores, derived values, etc.
