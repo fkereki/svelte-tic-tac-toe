@@ -12,7 +12,7 @@ const turn = writable("");
 let oldwhoWins;
 const whoWins = derived(game, _game => {
     const result = _game && _game.getwhoWins && _game.getwhoWins();
-    console.log("REEVALUATING whoWins   ", result !== oldwhoWins ? " *** CHANGED! *** " : " still ", result);
+    console.log("REEVALUATING WHOWINS  ", result !== oldwhoWins ? " *** CHANGED! *** " : " still ", result);
     oldwhoWins = result;
     return result;
 });
