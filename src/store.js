@@ -6,14 +6,14 @@ const game = writable({});
 const turn = writable("");
 
 /**
- * winner is null while no player has won
- * If a player wins, then winner==="X" or "O" accordingly
+ * whoWins is null while no player has won
+ * If a player wins, then whoWins==="X" or "O" accordingly
  */
-let oldWinner;
-const winner = derived(game, _game => {
-    const result = _game && _game.getWinner && _game.getWinner();
-    console.log("REEVALUATING WINNER   ", result !== oldWinner ? " *** CHANGED! *** " : " still ", result);
-    oldWinner = result;
+let oldwhoWins;
+const whoWins = derived(game, _game => {
+    const result = _game && _game.getwhoWins && _game.getwhoWins();
+    console.log("REEVALUATING whoWins   ", result !== oldwhoWins ? " *** CHANGED! *** " : " still ", result);
+    oldwhoWins = result;
     return result;
 });
 
@@ -29,18 +29,18 @@ const boardFull = derived(game, _game => {
 });
 
 /**
- * tieGame is true if and only if there hasn't been a winner,
- * and all the board has been filled.
+ * tieGame is true if and only if the board has been filled,
+ * and there hasn't been a winner (whoWins===null)
  *
  * IT IS SUPPOSED TO BE AUTOMATICALLY DERIVED FROM THE PREVIOUS
- * winner AND boardFull VARIABLES, BUT THIS SOMEHOW DOESN'T WORK!
+ * whoWins AND boardFull VARIABLES, BUT THIS SOMEHOW DOESN'T WORK!
  */
 let oldTieGame;
-const tieGame = derived([winner, boardFull], ([_winner, _boardFull]) => {
-    const result = _boardFull && _winner === null;
+const tieGame = derived([whoWins, boardFull], ([_whoWins, _boardFull]) => {
+    const result = _boardFull && _whoWins === null;
     console.log("REEVALUATING TIEGAME  ", result !== oldTieGame ? " *** CHANGED! *** " : " still ", result);
     oldTieGame = result;
     return result;
 });
 
-export { game, turn, winner, boardFull, tieGame };
+export { game, turn, whoWins, boardFull, tieGame };
