@@ -4,10 +4,12 @@ const game = writable({});
 
 const turn = writable("");
 
-const whoWins = derived(game, _game => _game && _game.getwhoWins && _game.getwhoWins());
+const whoWins = writable("");
+// $: whoWins = game && game.getwhoWins && game.getwhoWins();
 
 const boardFull = derived(game, _game => _game && _game.isBoardFull && _game.isBoardFull());
 
-const tieGame = derived([whoWins, boardFull], ([_whoWins, _boardFull]) => _boardFull && _whoWins === null);
+const tieGame = writable("");
+// const tieGame = derived([whoWins, boardFull], ([_whoWins, _boardFull]) => _boardFull && _whoWins === null);
 
 export { game, turn, whoWins, boardFull, tieGame };
