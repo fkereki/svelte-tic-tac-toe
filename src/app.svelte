@@ -1,6 +1,6 @@
 <script>
-    import Board from "./Board.svelte";
-    import { TicTacToe } from "./board";
+    import Board from "./board.svelte";
+    import { TicTacToe } from "./ticTacToe.class";
     import { game, turn, whoWins, tieGame } from "./store";
 
     let finalResult = ``;
@@ -23,7 +23,7 @@
 
     $: [finalResult, gameEnded] = (() => {
         if ($whoWins) {
-            return [`${$whoWins} wins!`, true];
+            return [`${$whoWins} wins!!`, true];
         } else if ($tieGame) {
             return [`Tie game!`, true];
         } else {
