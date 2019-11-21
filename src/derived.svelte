@@ -1,7 +1,7 @@
 <script>
-import { game, whoWins, tieGame, boardFull } from "./store"
+    import { game, whoWins, tieGame, boardFull } from "./store";
 
-/*
+    /*
     A way to avoid using derived()
 
     1. Create a Svelte component which has no style and no visible html
@@ -10,12 +10,13 @@ import { game, whoWins, tieGame, boardFull } from "./store"
     4. Done!
 */
 
-$: $whoWins = $game && $game.getwhoWins && $game.getwhoWins();
+    $: $whoWins = $game && $game.getwhoWins && $game.getwhoWins();
 
-$: $tieGame = $boardFull && $whoWins === null;
-
+    $: $tieGame = $boardFull && $whoWins === null;
 </script>
 
-<style></style>
+<style>
+
+</style>
 
 XXX
