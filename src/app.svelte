@@ -1,7 +1,8 @@
 <script>
-    import Board from "./board.svelte";
-    import { TicTacToe } from "./ticTacToe.class";
-    import { game, turn, whoWins, tieGame } from "./store";
+    import Board from "./Board.svelte";
+    import Derived from "./derived.svelte";
+    import { TicTacToe } from "./board";
+    import { game, turn, tieGame, whoWins } from "./store";
 
     let finalResult = ``;
     let gameEnded = false;
@@ -46,3 +47,4 @@
     <h2 style="display:inline;">{finalResult}</h2>
 {/if}
 <Board game={$game} on:played={onPlayed} />
+<Derived />
