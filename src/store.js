@@ -6,8 +6,10 @@ const turn = writable("");
 
 const whoWins = writable("");
 // $: whoWins = game && game.getwhoWins && game.getwhoWins();
+// const whoWins = derived(game, _game => _game && _game.getwhoWins && _game.getwhoWins());
 
 const boardFull = derived(game, _game => _game && _game.isBoardFull && _game.isBoardFull());
+// const boardFull = derived(game, _game => _game && _game.isBoardFull && _game.isBoardFull());
 
 const tieGame = writable("");
 // const tieGame = derived([whoWins, boardFull], ([_whoWins, _boardFull]) => _boardFull && _whoWins === null);
