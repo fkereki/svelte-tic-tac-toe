@@ -5,7 +5,6 @@ const game = writable({});
 const turn = writable("");
 
 const whoWins = writable("");
-// $: whoWins = game && game.getwhoWins && game.getwhoWins();
 // const whoWins = derived(game, _game => _game && _game.getwhoWins && _game.getwhoWins());
 
 const boardFull = derived(game, _game => _game && _game.isBoardFull && _game.isBoardFull());
