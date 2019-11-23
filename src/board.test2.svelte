@@ -1,12 +1,14 @@
 <script>
     import Board from "./board";
     export let game;
-    export let onPlayed;
 </script>
 
 <style>
 
 </style>
 
+<!--
+    on:played means the event is forwarded up
+-->
 <h2>See console for output:</h2>
-<Board {game} on:played={onPlayed} />
+<Board {game} on:played />

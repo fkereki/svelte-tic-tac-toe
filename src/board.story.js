@@ -6,7 +6,7 @@ import { TicTacToe } from "./ticTacToe.class";
 
 const game = new TicTacToe();
 const onPlayed = decorate([x => [x[0].detail]]).action("played!");
-const onPlayed2 = e => window.console.log("clickity!", e);
+const onPlayed2 = e => window.console.log("clickity!", e.detail);
 
 export default { title: "Board" };
 
@@ -23,7 +23,9 @@ export const BoardWithActions = () => ({
 export const BoardWithConsole = () => ({
     Component: MyNewBoard,
     props: {
-        game,
-        onPlayed: onPlayed2
+        game
+    },
+    on: {
+        played: onPlayed2
     }
 });
