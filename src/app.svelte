@@ -1,7 +1,7 @@
 <script>
-    import Board from "./Board.svelte";
+    import Board from "./board.svelte";
     import Derived from "./derived.svelte";
-    import { TicTacToe } from "./board";
+    import { TicTacToe } from "./ticTacToe.class";
     import { game, turn, tieGame, whoWins } from "./store";
 
     let finalResult = ``;
