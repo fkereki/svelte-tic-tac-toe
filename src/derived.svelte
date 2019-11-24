@@ -18,5 +18,3 @@
 <style>
 
 </style>
-
-XXX
