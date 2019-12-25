@@ -8,7 +8,9 @@
         "start": "sirv public --single",
         "start:dev": "sirv public --single --dev",
         "eslint": "eslint src/**",
-        "storybook": "start-storybook"
+        "storybook": "start-storybook",
+        "test": "jest src",
+        "test:watch": "npm run test -- --watch"
     },
     "dependencies": {
         "sirv-cli": "^0.4.5"
@@ -17,9 +19,15 @@
         "@babel/core": "^7.7.2",
         "@storybook/addon-actions": "^5.2.6",
         "@storybook/svelte": "^5.2.6",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/svelte": "^1.9.1",
         "babel-loader": "^8.0.6",
-        "eslint": "^6.6.0",
+        "babel-preset-env": "^1.7.0",
+        "eslint": "^6.7.0",
+        "eslint-plugin-jest": "^23.0.4",
         "eslint-plugin-svelte3": "^2.7.3",
+        "jest": "^24.9.0",
+        "jest-transform-svelte": "^2.1.0",
         "npm-run-all": "^4.1.5",
         "prettier": "^1.19.1",
         "prettier-plugin-svelte": "^0.7.0",
@@ -39,10 +47,12 @@
         },
         "env": {
             "browser": true,
+            "jest/globals": true,
             "node": true
         },
         "plugins": [
-            "svelte3"
+            "svelte3",
+            "jest"
         ],
         "extends": "eslint:recommended",
         "overrides": [
@@ -54,6 +64,11 @@
             }
         ],
         "rules": {
+            "jest/no-disabled-tests": "warn",
+            "jest/no-focused-tests": "error",
+            "jest/no-identical-title": "error",
+            "jest/prefer-to-have-length": "warn",
+            "jest/valid-expect": "error",
             "no-unused-vars": "error",
             "no-var": "error",
             "semi": "error"
@@ -62,5 +77,20 @@
     "prettier": {
         "printWidth": 120,
         "tabWidth": 4
+    },
+    "jest": {
+        "transform": {
+            "\\.js$": "babel-jest",
+            "^.+\\.svelte$": "jest-transform-svelte"
+        },
+        "moduleFileExtensions": [
+            "js",
+            "svelte"
+        ]
+    },
+    "babel": {
+        "presets": [
+            "env"
+        ]
     }
 }

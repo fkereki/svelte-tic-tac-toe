@@ -23,7 +23,11 @@
         {#each game.board as row, rowIndex}
             <tr>
                 {#each row as col, colIndex}
-                    <td on:click={dispatch.bind(null, 'played', { rowIndex, colIndex })}>{col}</td>
+                    <td
+                        name={`rc_${rowIndex}_${colIndex}`}
+                        on:click={dispatch.bind(null, 'played', { rowIndex, colIndex })}>
+                        {col}
+                    </td>
                 {/each}
             </tr>
         {/each}

@@ -2,7 +2,11 @@
     import Board from "./board.svelte";
     import Derived from "./derived.svelte";
     import { TicTacToe } from "./ticTacToe.class";
+
     import { game, turn, tieGame, whoWins } from "./store";
+
+    import * as STORE from "./store";
+    window.STORE = STORE;
 
     let finalResult = ``;
     let gameEnded = false;
